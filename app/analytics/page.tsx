@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useAuth } from '@/contexts/AuthContext';
+// import { useAuth } from '@/contexts/AuthContext';
 import { httpClient } from '@/lib/services/httpClient';
 import {
     Activity,
@@ -74,27 +74,12 @@ interface AnalyticsData {
   }>;
 }
 
-const COLORS = ['#4B49AC', '#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444'];
+// const COLORS = ['#4B49AC', '#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444'];
 
 export default function AnalyticsPage() {
-  const { user } = useAuth();
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedPeriod, setSelectedPeriod] = useState('30d');
-  const [useMockData, setUseMockData] = useState(false);
-
-  useEffect(() => {
-    fetchAnalyticsData();
-    
-    // Fallback timeout to ensure loading doesn't get stuck
-    const timeout = setTimeout(() => {
-      console.log('Timeout reached, using mock data');
-      setAnalyticsData(mockData);
-      setLoading(false);
-    }, 5000); // 5 second timeout
-    
-    return () => clearTimeout(timeout);
-  }, [selectedPeriod]);
 
   const fetchAnalyticsData = async () => {
     try {
@@ -106,7 +91,7 @@ export default function AnalyticsPage() {
       
       if (response.success && response.data) {
         console.log('Setting analytics data from API');
-        setAnalyticsData(response.data);
+        setAnalyticsData(response.data as AnalyticsData);
       } else {
         console.error('Failed to fetch analytics data:', response.error);
         console.log('Using mock data instead');
@@ -121,6 +106,19 @@ export default function AnalyticsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchAnalyticsData();
+    
+    // Fallback timeout to ensure loading doesn't get stuck
+    const timeout = setTimeout(() => {
+      console.log('Timeout reached, using mock data');
+      setAnalyticsData(mockData);
+      setLoading(false);
+    }, 5000); // 5 second timeout
+    
+    return () => clearTimeout(timeout);
+  }, [selectedPeriod]);
 
   // Mock data for demonstration (replace with real API calls)
   const mockData: AnalyticsData = {
@@ -365,7 +363,8 @@ export default function AnalyticsPage() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ status, percent }) => `${status} ${(percent * 100).toFixed(0)}%`}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      label={(props: any) => `${props.status} ${((props.percent || 0) * 100).toFixed(0)}%`}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="count"
@@ -591,7 +590,8 @@ export default function AnalyticsPage() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ source, percent }) => `${source} ${(percent * 100).toFixed(0)}%`}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      label={(props: any) => `${props.source} ${((props.percent || 0) * 100).toFixed(0)}%`}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="count"

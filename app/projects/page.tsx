@@ -449,7 +449,7 @@ export default function ProjectsPage() {
                 </div>
                 <div>
                   <Label htmlFor="status">Status</Label>
-                  <Select value={formData.status} onValueChange={(value) => setFormData(prev => ({ ...prev, status: value as any }))}>
+                  <Select value={formData.status} onValueChange={(value: 'planning' | 'in_progress' | 'on_hold' | 'completed' | 'cancelled') => setFormData(prev => ({ ...prev, status: value }))}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -467,7 +467,7 @@ export default function ProjectsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="priority">Priority</Label>
-                  <Select value={formData.priority} onValueChange={(value) => setFormData(prev => ({ ...prev, priority: value as any }))}>
+                  <Select value={formData.priority} onValueChange={(value: 'low' | 'medium' | 'high' | 'urgent') => setFormData(prev => ({ ...prev, priority: value }))}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>

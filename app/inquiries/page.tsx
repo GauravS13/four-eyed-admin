@@ -838,7 +838,7 @@ export default function InquiriesPage() {
                 </div>
                 <div>
                   <Label htmlFor="priority">Priority</Label>
-                  <Select value={createForm.priority} onValueChange={(value) => setCreateForm(prev => ({ ...prev, priority: value as any }))}>
+                  <Select value={createForm.priority} onValueChange={(value: 'low' | 'medium' | 'high' | 'urgent') => setCreateForm(prev => ({ ...prev, priority: value }))}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -852,7 +852,7 @@ export default function InquiriesPage() {
                 </div>
                 <div>
                   <Label htmlFor="source">Source</Label>
-                  <Select value={createForm.source} onValueChange={(value) => setCreateForm(prev => ({ ...prev, source: value as any }))}>
+                  <Select value={createForm.source} onValueChange={(value: 'website' | 'email' | 'phone' | 'referral' | 'social_media' | 'other') => setCreateForm(prev => ({ ...prev, source: value }))}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>

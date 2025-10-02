@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
 
     // Calculate date range based on period
     const now = new Date();
-    let startDate = new Date();
+    const startDate = new Date();
     
     switch (period) {
       case '7d':
@@ -103,8 +103,8 @@ export async function GET(request: NextRequest) {
 
     const [
       previousUsers,
-      previousClients,
-      previousInquiries
+      previousClients
+      // previousInquiries
     ] = await Promise.all([
       User.countDocuments({ 
         isActive: true, 
@@ -118,18 +118,18 @@ export async function GET(request: NextRequest) {
           $gte: new Date(previousPeriodStart.getTime() - (now.getTime() - startDate.getTime())),
           $lt: startDate
         } 
-      }),
-      Inquiry.countDocuments({ 
-        createdAt: { 
-          $gte: new Date(previousPeriodStart.getTime() - (now.getTime() - startDate.getTime())),
-          $lt: startDate
-        } 
       })
+      // Inquiry.countDocuments({ 
+      //   createdAt: { 
+      //     $gte: new Date(previousPeriodStart.getTime() - (now.getTime() - startDate.getTime())),
+      //     $lt: startDate
+      //   } 
+      // })
     ]);
 
     const userGrowth = previousUsers > 0 ? ((newUsers - previousUsers) / previousUsers) * 100 : 0;
     const clientGrowth = previousClients > 0 ? ((newClients - previousClients) / previousClients) * 100 : 0;
-    const inquiryGrowth = previousInquiries > 0 ? ((newInquiries - previousInquiries) / previousInquiries) * 100 : 0;
+    // const inquiryGrowth = previousInquiries > 0 ? ((newInquiries - previousInquiries) / previousInquiries) * 100 : 0;
 
     // Get revenue data (mock for now - replace with actual revenue calculation)
     const monthlyRevenue = 125000; // This should be calculated from actual project data

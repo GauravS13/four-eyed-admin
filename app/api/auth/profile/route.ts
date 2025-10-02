@@ -8,19 +8,20 @@ import { z } from 'zod';
 const updateProfileSchema = z.object({
   firstName: z.string().min(1, 'First name is required').max(50, 'First name cannot exceed 50 characters'),
   lastName: z.string().min(1, 'Last name is required').max(50, 'Last name cannot exceed 50 characters'),
+  email: z.string().email('Invalid email format').optional(),
   phone: z.string().optional(),
   department: z.string().optional(),
   avatar: z.string().url().optional().or(z.literal('')),
 });
 
-const changePasswordSchema = z.object({
-  currentPassword: z.string().min(1, 'Current password is required'),
-  newPassword: z.string().min(8, 'New password must be at least 8 characters long'),
-  confirmPassword: z.string().min(1, 'Password confirmation is required'),
-}).refine((data) => data.newPassword === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
+// const changePasswordSchema = z.object({
+//   currentPassword: z.string().min(1, 'Current password is required'),
+//   newPassword: z.string().min(8, 'New password must be at least 8 characters long'),
+//   confirmPassword: z.string().min(1, 'Password confirmation is required'),
+// }).refine((data) => data.newPassword === data.confirmPassword, {
+//   message: "Passwords don't match",
+//   path: ["confirmPassword"],
+// });
 
 export async function GET(request: NextRequest) {
   try {
@@ -133,7 +134,7 @@ export async function PUT(request: NextRequest) {
     
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation failed', details: error.errors },
+        { error: 'Validation failed', details: error.issues },
         { status: 400 }
       );
     }

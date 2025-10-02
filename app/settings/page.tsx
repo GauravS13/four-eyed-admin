@@ -21,7 +21,7 @@ import {
     Server,
     Shield
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 interface SystemSettings {
@@ -73,7 +73,7 @@ interface SystemSettings {
 }
 
 export default function SettingsPage() {
-  const { user, isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated } = useAuth();
   const defaultSettings: SystemSettings = {
     general: {
       siteName: 'Four Eyed Gems',
@@ -127,35 +127,30 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (isAuthenticated && user) {
-      fetchSettings();
-    }
-  }, [isAuthenticated, user]);
-
-  const fetchSettings = async () => {
+  const fetchSettings = useCallback(async () => {
     try {
       setLoading(true);
       const response = await httpClient.get('/api/settings');
 
       if (response.success) {
         // Merge API response with default settings to ensure all properties exist
+        const responseData = response.data as SystemSettings;
         const mergedSettings = {
           ...defaultSettings,
-          ...response.data,
-          general: { ...defaultSettings.general, ...response.data.general },
-          notifications: { ...defaultSettings.notifications, ...response.data.notifications },
+          ...responseData,
+          general: { ...defaultSettings.general, ...responseData.general },
+          notifications: { ...defaultSettings.notifications, ...responseData.notifications },
           security: {
             ...defaultSettings.security,
-            ...response.data.security,
+            ...responseData.security,
             passwordPolicy: {
               ...defaultSettings.security.passwordPolicy,
-              ...response.data.security?.passwordPolicy
+              ...responseData.security?.passwordPolicy
             }
           },
-          appearance: { ...defaultSettings.appearance, ...response.data.appearance },
-          integrations: { ...defaultSettings.integrations, ...response.data.integrations },
-          backup: { ...defaultSettings.backup, ...response.data.backup }
+          appearance: { ...defaultSettings.appearance, ...responseData.appearance },
+          integrations: { ...defaultSettings.integrations, ...responseData.integrations },
+          backup: { ...defaultSettings.backup, ...responseData.backup }
         };
         setSettings(mergedSettings);
       } else {
@@ -172,7 +167,13 @@ export default function SettingsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchSettings();
+    }
+  }, [isAuthenticated, fetchSettings]);
 
   const saveSettings = async (section: keyof SystemSettings) => {
     try {
@@ -195,7 +196,7 @@ export default function SettingsPage() {
     }
   };
 
-  const handleSettingChange = (section: keyof SystemSettings, field: string, value: any) => {
+  const handleSettingChange = (section: keyof SystemSettings, field: string, value: string | number | boolean) => {
     setSettings(prev => ({
       ...prev,
       [section]: {
@@ -205,13 +206,13 @@ export default function SettingsPage() {
     }));
   };
 
-  const handleNestedSettingChange = (section: keyof SystemSettings, parentField: string, field: string, value: any) => {
+  const handleNestedSettingChange = (section: keyof SystemSettings, parentField: string, field: string, value: string | number | boolean) => {
     setSettings(prev => ({
       ...prev,
       [section]: {
         ...prev[section],
         [parentField]: {
-          ...(prev[section] as any)[parentField],
+          ...(prev[section] as Record<string, unknown>)[parentField] as Record<string, unknown>,
           [field]: value
         }
       }

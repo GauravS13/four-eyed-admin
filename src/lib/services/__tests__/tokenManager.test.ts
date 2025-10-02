@@ -34,7 +34,16 @@ describe('TokenManager', () => {
     });
 
     it('should return tokens when valid data is stored', () => {
-      const mockUser = { id: '1', email: 'test@example.com' };
+      const mockUser = {
+        _id: '1',
+        firstName: 'Test',
+        lastName: 'User',
+        email: 'test@example.com',
+        role: 'admin' as const,
+        isActive: true,
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-01-01T00:00:00Z'
+      };
       const mockToken = 'valid-token';
       const mockRefreshToken = 'valid-refresh-token';
 
@@ -56,7 +65,16 @@ describe('TokenManager', () => {
 
   describe('setTokens', () => {
     it('should store tokens in localStorage', () => {
-      const mockUser = { id: '1', email: 'test@example.com' };
+      const mockUser = {
+        _id: '1',
+        firstName: 'Test',
+        lastName: 'User',
+        email: 'test@example.com',
+        role: 'admin' as const,
+        isActive: true,
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-01-01T00:00:00Z'
+      };
       const mockToken = 'valid-token';
       const mockRefreshToken = 'valid-refresh-token';
 
@@ -89,7 +107,16 @@ describe('TokenManager', () => {
     it('should clear tokens and call logout API', async () => {
       const mockToken = 'valid-token';
       const mockRefreshToken = 'valid-refresh-token';
-      const mockUser = { id: '1', email: 'test@example.com' };
+      const mockUser = {
+        _id: '1',
+        firstName: 'Test',
+        lastName: 'User',
+        email: 'test@example.com',
+        role: 'admin' as const,
+        isActive: true,
+        createdAt: '2024-01-01T00:00:00Z',
+        updatedAt: '2024-01-01T00:00:00Z'
+      };
 
       localStorageMock.getItem
         .mockReturnValueOnce(mockToken)
