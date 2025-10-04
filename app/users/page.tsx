@@ -7,46 +7,46 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from '@/components/ui/dialog';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from '@/components/ui/select';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from '@/components/ui/table';
 import {
-  Edit,
-  Filter,
-  Key,
-  MoreHorizontal,
-  Plus,
-  Search,
-  Trash2,
-  UserCheck,
-  UserX,
+    Edit,
+    Filter,
+    Key,
+    MoreHorizontal,
+    Plus,
+    Search,
+    Trash2,
+    UserCheck,
+    UserX,
 } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -557,18 +557,22 @@ export default function UsersPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName">First Name</Label>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    First Name
+                  </Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
                     onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="lastName">Last Name</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Last Name
+                  </Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
@@ -577,8 +581,10 @@ export default function UsersPage() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="email">Email</Label>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -587,8 +593,10 @@ export default function UsersPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="password">Password</Label>
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
@@ -597,8 +605,10 @@ export default function UsersPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="role">Role</Label>
+              <div className="space-y-2">
+                <Label htmlFor="role" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Role
+                </Label>
                 <Select value={formData.role} onValueChange={(value: string) => setFormData(prev => ({ ...prev, role: value as 'super_admin' | 'admin' | 'staff' }))}>
                   <SelectTrigger>
                     <SelectValue />
@@ -611,8 +621,10 @@ export default function UsersPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="department">Department</Label>
+              <div className="space-y-2">
+                <Label htmlFor="department" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Department
+                </Label>
                 <Input
                   id="department"
                   value={formData.department}
@@ -620,8 +632,10 @@ export default function UsersPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="phone">Phone</Label>
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Phone
+                </Label>
                 <Input
                   id="phone"
                   value={formData.phone}
@@ -651,18 +665,22 @@ export default function UsersPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="editFirstName">First Name</Label>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="editFirstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    First Name
+                  </Label>
                   <Input
                     id="editFirstName"
                     value={formData.firstName}
                     onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="editLastName">Last Name</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="editLastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Last Name
+                  </Label>
                   <Input
                     id="editLastName"
                     value={formData.lastName}
@@ -671,8 +689,10 @@ export default function UsersPage() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="editEmail">Email</Label>
+              <div className="space-y-2">
+                <Label htmlFor="editEmail" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email
+                </Label>
                 <Input
                   id="editEmail"
                   type="email"
@@ -681,8 +701,10 @@ export default function UsersPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="editRole">Role</Label>
+              <div className="space-y-2">
+                <Label htmlFor="editRole" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Role
+                </Label>
                 <Select value={formData.role} onValueChange={(value: string) => setFormData(prev => ({ ...prev, role: value as 'super_admin' | 'admin' | 'staff' }))}>
                   <SelectTrigger>
                     <SelectValue />
@@ -695,8 +717,10 @@ export default function UsersPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="editDepartment">Department</Label>
+              <div className="space-y-2">
+                <Label htmlFor="editDepartment" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Department
+                </Label>
                 <Input
                   id="editDepartment"
                   value={formData.department}
@@ -704,8 +728,10 @@ export default function UsersPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="editPhone">Phone</Label>
+              <div className="space-y-2">
+                <Label htmlFor="editPhone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Phone
+                </Label>
                 <Input
                   id="editPhone"
                   value={formData.phone}
@@ -720,7 +746,9 @@ export default function UsersPage() {
                   checked={formData.isActive}
                   onChange={(e) => setFormData(prev => ({ ...prev, isActive: e.target.checked }))}
                 />
-                <Label htmlFor="isActive">Active User</Label>
+                <Label htmlFor="isActive" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Active User
+                </Label>
               </div>
             </div>
 
@@ -745,8 +773,10 @@ export default function UsersPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div>
-              <Label htmlFor="newPassword">New Password</Label>
+            <div className="space-y-2">
+              <Label htmlFor="newPassword" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                New Password
+              </Label>
               <Input
                 id="newPassword"
                 type="password"

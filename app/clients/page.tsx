@@ -6,44 +6,44 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from '@/components/ui/select';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  Building,
-  Edit,
-  Filter,
-  Globe,
-  Mail,
-  MapPin,
-  MessageSquare,
-  Phone,
-  Plus,
-  Search,
-  Trash2,
-  User
+    Building,
+    Edit,
+    Filter,
+    Globe,
+    Mail,
+    MapPin,
+    MessageSquare,
+    Phone,
+    Plus,
+    Search,
+    Trash2,
+    User
 } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -795,19 +795,23 @@ export default function ClientsPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               {/* Basic Information */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName">First Name *</Label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    First Name <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
                     onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="lastName">Last Name *</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Last Name <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
@@ -816,8 +820,10 @@ export default function ClientsPage() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="email">Email *</Label>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email <span className="text-red-500">*</span>
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -826,17 +832,21 @@ export default function ClientsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="phone">Phone</Label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Phone
+                  </Label>
                   <Input
                     id="phone"
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="website">Website</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="website" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Website
+                  </Label>
                   <Input
                     id="website"
                     value={formData.website}
@@ -846,17 +856,21 @@ export default function ClientsPage() {
               </div>
 
               {/* Business Information */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="company">Company</Label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="company" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Company
+                  </Label>
                   <Input
                     id="company"
                     value={formData.company}
                     onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="position">Position</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="position" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Position
+                  </Label>
                   <Input
                     id="position"
                     value={formData.position}
@@ -865,17 +879,21 @@ export default function ClientsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="industry">Industry</Label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="industry" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Industry
+                  </Label>
                   <Input
                     id="industry"
                     value={formData.industry}
                     onChange={(e) => setFormData(prev => ({ ...prev, industry: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="status">Status</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="status" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Status
+                  </Label>
                   <Select value={formData.status} onValueChange={(value: 'active' | 'inactive' | 'prospect' | 'former') => setFormData(prev => ({ ...prev, status: value }))}>
                     <SelectTrigger>
                       <SelectValue />
@@ -891,9 +909,11 @@ export default function ClientsPage() {
               </div>
 
               {/* Address */}
-              <div>
-                <Label>Address</Label>
-                <div className="grid grid-cols-2 gap-4 mt-2">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Address
+                </Label>
+                <div className="grid grid-cols-2 gap-4">
                   <Input
                     placeholder="Street"
                     value={formData.address.street}
@@ -934,7 +954,6 @@ export default function ClientsPage() {
                     ...prev,
                     address: { ...prev.address, country: e.target.value }
                   }))}
-                  className="mt-2"
                 />
               </div>
             </div>
@@ -963,8 +982,10 @@ export default function ClientsPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div>
-              <Label htmlFor="note">Note</Label>
+            <div className="space-y-2">
+              <Label htmlFor="note" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Note
+              </Label>
               <Textarea
                 id="note"
                 placeholder="Enter your note here..."

@@ -404,10 +404,12 @@ export default function ProjectsPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="title">Project Title *</Label>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="title" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Project Title <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="title"
                     value={formData.title}
@@ -415,8 +417,10 @@ export default function ProjectsPage() {
                     placeholder="Enter project title"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="category">Category *</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="category" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Category <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="category"
                     value={formData.category}
@@ -426,8 +430,10 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="description">Description *</Label>
+              <div className="space-y-2">
+                <Label htmlFor="description" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Description <span className="text-red-500">*</span>
+                </Label>
                 <Textarea
                   id="description"
                   value={formData.description}
@@ -437,9 +443,11 @@ export default function ProjectsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="client">Client ID *</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="client" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Client ID <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="client"
                     value={formData.client}
@@ -447,8 +455,10 @@ export default function ProjectsPage() {
                     placeholder="Enter client ID"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="status">Status</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="status" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Status
+                  </Label>
                   <Select value={formData.status} onValueChange={(value: 'planning' | 'in_progress' | 'on_hold' | 'completed' | 'cancelled') => setFormData(prev => ({ ...prev, status: value }))}>
                     <SelectTrigger>
                       <SelectValue />
@@ -464,9 +474,11 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="priority">Priority</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="priority" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Priority
+                  </Label>
                   <Select value={formData.priority} onValueChange={(value: 'low' | 'medium' | 'high' | 'urgent') => setFormData(prev => ({ ...prev, priority: value }))}>
                     <SelectTrigger>
                       <SelectValue />
@@ -479,8 +491,10 @@ export default function ProjectsPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div>
-                  <Label htmlFor="budget">Budget</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="budget" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Budget
+                  </Label>
                   <Input
                     id="budget"
                     type="number"
@@ -491,9 +505,11 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="startDate">Start Date</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="startDate" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Start Date
+                  </Label>
                   <Input
                     id="startDate"
                     type="date"
@@ -501,8 +517,10 @@ export default function ProjectsPage() {
                     onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="deadline">Deadline</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="deadline" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Deadline
+                  </Label>
                   <Input
                     id="deadline"
                     type="date"

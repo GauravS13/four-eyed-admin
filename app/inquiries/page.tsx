@@ -666,9 +666,11 @@ export default function InquiriesPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="status">Status</Label>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="status" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Status
+                </Label>
                 <Select value={editForm.status} onValueChange={(value) => setEditForm(prev => ({ ...prev, status: value }))}>
                   <SelectTrigger>
                     <SelectValue />
@@ -683,8 +685,10 @@ export default function InquiriesPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="priority">Priority</Label>
+              <div className="space-y-2">
+                <Label htmlFor="priority" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Priority
+                </Label>
                 <Select value={editForm.priority} onValueChange={(value) => setEditForm(prev => ({ ...prev, priority: value }))}>
                   <SelectTrigger>
                     <SelectValue />
@@ -698,8 +702,10 @@ export default function InquiriesPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="category">Category</Label>
+              <div className="space-y-2">
+                <Label htmlFor="category" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Category
+                </Label>
                 <Input
                   id="category"
                   value={editForm.category}
@@ -729,8 +735,10 @@ export default function InquiriesPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div>
-              <Label htmlFor="note">Note</Label>
+            <div className="space-y-2">
+              <Label htmlFor="note" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Note
+              </Label>
               <Textarea
                 id="note"
                 placeholder="Enter your note here..."
@@ -761,10 +769,12 @@ export default function InquiriesPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="name">Name *</Label>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Name <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="name"
                     value={createForm.name}
@@ -772,8 +782,10 @@ export default function InquiriesPage() {
                     placeholder="Enter full name"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="email">Email *</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Email <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -784,9 +796,11 @@ export default function InquiriesPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="phone">Phone</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Phone
+                  </Label>
                   <Input
                     id="phone"
                     value={createForm.phone}
@@ -794,8 +808,10 @@ export default function InquiriesPage() {
                     placeholder="Enter phone number"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="company">Company</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="company" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Company
+                  </Label>
                   <Input
                     id="company"
                     value={createForm.company}
@@ -805,8 +821,10 @@ export default function InquiriesPage() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="subject">Subject *</Label>
+              <div className="space-y-2">
+                <Label htmlFor="subject" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Subject <span className="text-red-500">*</span>
+                </Label>
                 <Input
                   id="subject"
                   value={createForm.subject}
@@ -815,8 +833,10 @@ export default function InquiriesPage() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="message">Message *</Label>
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Message <span className="text-red-500">*</span>
+                </Label>
                 <Textarea
                   id="message"
                   value={createForm.message}
@@ -826,9 +846,11 @@ export default function InquiriesPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <Label htmlFor="category">Category *</Label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="category" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Category <span className="text-red-500">*</span>
+                  </Label>
                   <Input
                     id="category"
                     value={createForm.category}
@@ -836,8 +858,10 @@ export default function InquiriesPage() {
                     placeholder="Enter category"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="priority">Priority</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="priority" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Priority
+                  </Label>
                   <Select value={createForm.priority} onValueChange={(value: 'low' | 'medium' | 'high' | 'urgent') => setCreateForm(prev => ({ ...prev, priority: value }))}>
                     <SelectTrigger>
                       <SelectValue />
@@ -850,8 +874,10 @@ export default function InquiriesPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div>
-                  <Label htmlFor="source">Source</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="source" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Source
+                  </Label>
                   <Select value={createForm.source} onValueChange={(value: 'website' | 'email' | 'phone' | 'referral' | 'social_media' | 'other') => setCreateForm(prev => ({ ...prev, source: value }))}>
                     <SelectTrigger>
                       <SelectValue />

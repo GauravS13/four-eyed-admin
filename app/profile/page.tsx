@@ -327,7 +327,9 @@ export default function ProfilePage() {
               {/* Profile Form */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    First Name
+                  </Label>
                   <Input
                     id="firstName"
                     value={profileForm.firstName}
@@ -337,7 +339,9 @@ export default function ProfilePage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Last Name
+                  </Label>
                   <Input
                     id="lastName"
                     value={profileForm.lastName}
@@ -347,7 +351,9 @@ export default function ProfilePage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Email
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -358,7 +364,9 @@ export default function ProfilePage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Phone
+                  </Label>
                   <Input
                     id="phone"
                     value={profileForm.phone}
@@ -368,7 +376,9 @@ export default function ProfilePage() {
                   />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="department">Department</Label>
+                  <Label htmlFor="department" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Department
+                  </Label>
                   <Input
                     id="department"
                     value={profileForm.department}
