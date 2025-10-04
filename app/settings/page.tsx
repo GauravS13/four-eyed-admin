@@ -228,32 +228,32 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600">Manage your system configuration and preferences</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Settings</h1>
+          <p className="text-gray-600 text-sm sm:text-base">Manage your system configuration and preferences</p>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="text-sm text-gray-500">
+          <div className="text-xs sm:text-sm text-gray-500">
             Last updated: {settings.backup?.lastBackup ? new Date(settings.backup.lastBackup).toLocaleString() : 'Never'}
           </div>
         </div>
       </div>
 
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-6">
-          <TabsTrigger value="general">General</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="appearance">Appearance</TabsTrigger>
-          <TabsTrigger value="integrations">Integrations</TabsTrigger>
-          <TabsTrigger value="backup">Backup</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1">
+          <TabsTrigger value="general" className="text-xs sm:text-sm">General</TabsTrigger>
+          <TabsTrigger value="notifications" className="text-xs sm:text-sm">Notifications</TabsTrigger>
+          <TabsTrigger value="security" className="text-xs sm:text-sm">Security</TabsTrigger>
+          <TabsTrigger value="appearance" className="text-xs sm:text-sm">Appearance</TabsTrigger>
+          <TabsTrigger value="integrations" className="text-xs sm:text-sm">Integrations</TabsTrigger>
+          <TabsTrigger value="backup" className="text-xs sm:text-sm">Backup</TabsTrigger>
         </TabsList>
 
         {/* General Settings */}
-        <TabsContent value="general" className="space-y-6">
+        <TabsContent value="general" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -267,7 +267,9 @@ export default function SettingsPage() {
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="siteName">Site Name</Label>
+                  <Label htmlFor="siteName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Site Name
+                  </Label>
                   <Input
                     id="siteName"
                     value={settings.general.siteName}
@@ -276,7 +278,9 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="siteUrl">Site URL</Label>
+                  <Label htmlFor="siteUrl" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Site URL
+                  </Label>
                   <Input
                     id="siteUrl"
                     value={settings.general.siteUrl}
@@ -285,7 +289,9 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="adminEmail">Admin Email</Label>
+                  <Label htmlFor="adminEmail" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Admin Email
+                  </Label>
                   <Input
                     id="adminEmail"
                     type="email"
@@ -295,7 +301,9 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="timezone">Timezone</Label>
+                  <Label htmlFor="timezone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Timezone
+                  </Label>
                   <select
                     id="timezone"
                     value={settings.general.timezone}
@@ -313,7 +321,9 @@ export default function SettingsPage() {
                   </select>
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="siteDescription">Site Description</Label>
+                  <Label htmlFor="siteDescription" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Site Description
+                  </Label>
                   <Textarea
                     id="siteDescription"
                     value={settings.general.siteDescription}
@@ -323,10 +333,11 @@ export default function SettingsPage() {
                   />
                 </div>
               </div>
-              <div className="flex justify-end">
+              <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
                 <Button 
                   onClick={() => saveSettings('general')}
                   disabled={saving}
+                  className="w-full sm:w-auto"
                 >
                   <Save className="w-4 h-4 mr-2" />
                   Save General Settings
